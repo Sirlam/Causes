@@ -22,11 +22,22 @@
                 </div>
                 <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-search"></i> Find</button>
             </form>
-            <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
-            <p class="navbar-text navbar-right"><a href="#"><i class="glyphicon glyphicon-user"></i></a></p>
-            <p class="navbar-text navbar-right"><a href="#"><i class="glyphicon glyphicon-bell"></i></a></p>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    <p class="navbar-text navbar-right"><button type="submit" class="btn btn-warning">Logout</button></p>
+                }
+            }
+            else
+            {
+                <p class="navbar-text navbar-right">@Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-warning" })</p>
+            }
+
         </div>
     </nav>
+
+    <div class="clearfix"></div>
 
     <!--
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -53,10 +64,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        
         <footer>
             <p>Copyright &copy; @DateTime.Now.Year - Causes.org</p>
         </footer>
     </div>
+
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

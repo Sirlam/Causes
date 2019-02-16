@@ -1,43 +1,53 @@
-﻿@model Causes.UI.Web.ViewModels.User
+﻿@model Causes.UI.Web.ViewModels.Login
 
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Login</legend>
+<div class="row">
+    <div class="col-md-5 mt-10 centered">
+        <div class="card">
+            <h4 class="text-center">Login</h4>
+            <p class="text-danger">@ViewBag.Error</p>
+            <p class="text-success">@TempData["RegisterMessage"]</p>
+            <br />
 
-        <div>
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div>
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Email Address" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
 
-        <div>
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div>
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
 
-        <div>
-            @Html.LabelFor(model => model.RememberMe)
-        </div>
-        <div>
-            @Html.EditorFor(model => model.RememberMe)
-            @Html.ValidationMessageFor(model => model.RememberMe)
-        </div>
+                    <div>
+                        @Html.EditorFor(model => model.RememberMe, new { htmlAttributes = new { @class = "input-control" } })
+                        @Html.LabelFor(model => model.RememberMe, new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.RememberMe)
+                    </div>
 
-        <p>
-            <input type="submit" value="Login"/>
-        </p>
-    </fieldset>
-}
+                    <p>
+                        <button type="submit" class="btn btn-danger center-block"><i class="glyphicon glyphicon-ok"></i> Login</button>
+                    </p><br />
+
+                    <p class="content-divider">Don't have an account?</p><br />
+                    @Html.ActionLink("Create An Account", "Register", "Account", new { @class = "btn btn-warning center-block" })
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>

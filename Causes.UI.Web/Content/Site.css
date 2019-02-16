@@ -1,5 +1,6 @@
 ﻿body {
     margin: auto;
+    padding-top: 15px;
     padding-bottom: 20px;
 }
 
@@ -16,12 +17,12 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Set width on the form input elements since they're 100% wide by default 
 input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 .navbar-brand {
     margin-top: -12px !important;
@@ -40,4 +41,39 @@ textarea {
 
 .mt-20{
     margin-top: 100px !important;
+}
+
+.mt-10 {
+    margin-top: 50px !important;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #222;
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.content-divider {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin: 10px 0;
 }
