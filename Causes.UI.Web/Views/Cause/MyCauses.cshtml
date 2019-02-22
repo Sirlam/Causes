@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Causes.UI.Web.ViewModels.Cause> 
+@{
+    ViewBag.Title = "My Causes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="clearfix">
+    <div class="pull-right">
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            Add New
+        </a>
+    </div>
+</div>
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.IMG_URL)</th>
+                    <th>@Html.DisplayNameFor(model => model.TOPIC)</th>
+                    <th>@Html.DisplayNameFor(model => model.DESCRIPTION)</th>
+                    <th>@Html.DisplayNameFor(model => model.CREATED_DATE)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td><img src="@Url.Content(item.IMG_URL)" class="sm-image"/></td>
+                    <td>@Html.DisplayFor(modelItem => item.TOPIC)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DESCRIPTION)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CREATED_DATE)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

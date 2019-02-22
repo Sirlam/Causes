@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="description" content="A webpage where people can create causes for others to sign" />
+    <title>Causes.org | @ViewBag.Title</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/favicon.ico" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800">
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/font-awesome")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <main>
+        @RenderBody()
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

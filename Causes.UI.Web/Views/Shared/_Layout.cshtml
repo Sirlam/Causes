@@ -9,31 +9,48 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav id="myNavbar" class="navbar navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/Home/Index">
                     <img alt="Logo" src="~/images/logo.png">
                 </a>
             </div>
-            <form class="navbar-form center-block navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Find causes">
-                </div>
-                <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-search"></i> Find</button>
-            </form>
-            @if (Request.IsAuthenticated)
-            {
-                using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                {
-                    <p class="navbar-text navbar-right"><button type="submit" class="btn btn-warning">Logout</button></p>
-                }
-            }
-            else
-            {
-                <p class="navbar-text navbar-right">@Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-warning" })</p>
-            }
 
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <form class="navbar-form center-block navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Find causes">
+                    </div>
+                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-search"></i> Find</button>
+                </form>
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="glyphicon glyphicon-user"></i> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">My Causes</a></li>
+                                @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    <li>
+                                        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                                    </li>
+                                }
+                                <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <p class="navbar-text navbar-right">@Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-warning" })</p>
+                }
+            </div>
         </div>
     </nav>
 
@@ -64,13 +81,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        
-        <footer>
-            <p>Copyright &copy; @DateTime.Now.Year - Causes.org</p>
-        </footer>
+
     </div>
 
-    
+    <footer>
+        <p>Copyright &copy; @DateTime.Now.Year - Causes.org</p>
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
