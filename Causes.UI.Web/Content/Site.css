@@ -26,3 +26,11 @@ textarea {
 .logo {
     height: 50px;
 }
+
+.back-image {
+    background-image: url('../images/backgorund.jpg');
+}
+
+.card-img-top{
+    height: 200px;
+}

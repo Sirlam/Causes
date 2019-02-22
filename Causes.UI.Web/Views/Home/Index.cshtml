@@ -1,3 +1,86 @@
-﻿@{
+﻿@model List<Causes.UI.Web.ViewModels.Cause>
+@{
     ViewBag.Title = "Create causes for people to sign";
 }
+
+
+<section class="slice slice-lg bg-secondary delimiter-top delimiter-bottom">
+    <div class="container">
+        <div class="mb-md text-center">
+            <h3 class="heading h2">Latest causes added</h3>
+            <div class="fluid-paragraph mt-3">
+                <p class="lead">You can create your own cause, sign causes and share on social media platforms.</p>
+            </div>
+        </div>
+
+        <div class="row row-grid">
+            @if (Model.Count <= 0)
+            {
+                <p class="lead">No causes has been added yet</p>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm shadow--hover">
+                            <img alt="Image placeholder" src="@Url.Content(item.IMG_URL)" class="card-img-top">
+                            <div class="card-body py-5 text-center">
+                                <a href="#" class="h5 lh-150">@item.TOPIC</a>
+                                <h6 class="text-muted mt-4 mb-0">By: Salam Olanrewaju</h6>
+                                <h6 class="text-muted mt-4 mb-0">@item.CREATED_DATE</h6>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item pr-4">
+                                                <a href="#" class="text-muted"><i class="fa fa-share mr-1 text-muted"></i> 131</a>
+                                            </li>
+                                            <li class="list-inline-item pr-4">
+                                                <a href="#" class="text-muted"><i class="far fa-eye mr-1 text-muted"></i> View</a>
+                                            </li>
+                                            <li class="list-inline-item pr-4">
+                                                <a href="#" class="text-muted"><i class="fa fa-check mr-1 text-muted"></i> Sign</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<section class="slice slice-lg delimiter-bottom">
+    <div class="container">
+        <div class="mb-4 mt-lg text-center text-uppercase font-weight-bold ls-1">
+            <h6>Share on</h6>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-2 col-6 mb-4 mb-md-0">
+                <div class="px-4 py-4">
+                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-1.png" class="img-fluid img-grayscale">
+                </div>
+            </div>
+            <div class="col-md-2 col-6 mb-4 mb-md-0">
+                <div class="px-4 py-4">
+                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-2.png" class="img-fluid img-grayscale">
+                </div>
+            </div>
+            <div class="col-md-2 col-6 mb-4 mb-md-0">
+                <div class="px-4 py-4">
+                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-3.png" class="img-fluid img-grayscale">
+                </div>
+            </div>
+            <div class="col-md-2 col-6 mb-4 mb-md-0">
+                <div class="px-4 py-4">
+                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-4.png" class="img-fluid img-grayscale">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800">
 
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/font-awesome")
     @Styles.Render("~/Content/swiper")
     @Styles.Render("~/Content/fancybox")
     @Scripts.Render("~/bundles/modernizr")
@@ -22,7 +23,7 @@
         <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-dark bg-dark" id="navbar-main">
             <div class="container">
                 <a class="navbar-brand mr-lg-5" href="../index.html">
-                    <img class="logo" alt="Causes.org" src="../assets/img/brand/white.png" >
+                    <img class="logo" alt="Causes.org" src="~/images/logo.png">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,156 +33,133 @@
                 <div class="collapse navbar-collapse" id="navbar-main-collapse">
                     <ul class="navbar-nav align-items-lg-center">
                         <li class="nav-item ">
-                            <a class="nav-link" href="../index.html">Overview</a>
+                            <a class="nav-link" href="#">Home</a>
                         </li>
-                        <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow py-0">
-                                <div class="list-group">
-                                    <a href="pages-landing.html" class="list-group-item list-group-item-action">
-                                        <div class="media d-flex align-items-center">
-                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/browser-window.svg" class="img-saturate" style="width: 50px;">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-1">Landing Pages</h6>
-                                                <p class="mb-0">A great point to start from.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="pages-secondary.html" class="list-group-item list-group-item-action">
-                                        <div class="media d-flex align-items-center">
-                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/ios-photos.svg" class="img-saturate" style="width: 50px;">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-1">Secondary Pages</h6>
-                                                <p class="mb-0">Build your website with these demos.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="pages-account.html" class="list-group-item list-group-item-action">
-                                        <div class="media d-flex align-items-center">
-                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/maintenance.svg" class="img-saturate" style="width: 50px;">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-1">Account Pages</h6>
-                                                <p class="mb-0">Account management made easy.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="pages-shop.html" class="list-group-item list-group-item-action">
-                                        <div class="media d-flex align-items-center">
-                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/in-progress.svg" class="img-saturate" style="width: 50px;">
-                                            <div class="media-body ml-3">
-                                                <h6 class="mb-1">Shop Pages</h6>
-                                                <p class="mb-0">Explore the full ecommerce website flow.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="../docs/alerts.html" role="button">Components</a>
+                            <a class="nav-link" href="#" role="button">About</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../docs/introduction.html" target="_blank">Docs</a>
+                            <a class="nav-link" href="#" target="_blank">My Causes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../docs/changelog.html" target="_blank">Changelog</a>
+                            <a class="nav-link" href="#" target="_blank">Admin</a>
                         </li>
                         <li class="nav-item mr-0">
-                            <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="nav-link d-lg-none">Purchase now</a>
-                            <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex">
-                                <span class="btn-inner--icon"><i class="far fa-shopping-cart"></i></span>
-                                <span class="btn-inner--text">Purchase now</span>
+                            <a class="nav-link d-lg-none" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                            <a class="btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex" href="javascript:document.getElementById('logoutForm').submit()">
+                                <span class="btn-inner--icon"><i class="fa fa-power-off"></i></span>
+                                <span class="btn-inner--text">Logout</span>
                             </a>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>
     </header>
 
-    <nav id="myNavbar" class="navbar navbar-static-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse">
-                    <span class="sr-only">Menu</span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="~/Home/Index">
-                    <img alt="Logo" src="~/images/logo.png">
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="nav-collapse">
-                <form class="navbar-form center-block navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Find causes">
-                    </div>
-                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-search"></i> Find</button>
-                </form>
-                @if (Request.IsAuthenticated)
-                {
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="glyphicon glyphicon-user"></i> <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">My Causes</a></li>
-                                @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                                {
-                                    <li>
-                                        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
-                                    </li>
-                                }
-                                <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+    <section class="spotlight bg-cover bg-size--cover back-image" data-spotlight="fullscreen">
+        <div class="spotlight-holder py-lg py-lg-0">
+            <span class="mask bg-gradient-dark opacity-6"></span>
+            <div class="container py-md d-flex align-items-center">
+                <div class="col">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-7 col-lg-7 text-center">
+                            <h1 class="text-white lh-150 mb-4">On Causes.org, people are starting causes, mobilising supportes and changing the world.</h1>
+                            <ul class="list-inline">
+                                <li class="list-inline-item text-white">February 15, 2019</li>
+                                <li class="list-inline-item text-white">Written by Admin</li>
                             </ul>
-                        </li>
-                    </ul>
-                }
-                else
-                {
-                    <p class="navbar-text navbar-right">@Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-warning" })</p>
-                }
+                            <span class="clearfix"></span>
+                            <a href="#" class="btn btn-white btn-circle btn-icon mt-4">
+                                <span class="btn-inner--text">Continue reading</span>
+                                <span class="btn-inner--icon"><i class="fa fa-angle-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <div class="clearfix"></div>
+    @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "hidden" }))
+    {
+    }
 
-    <!--
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-        -->
-
-    <div class="container body-content">
+    <div>
         @RenderBody()
         <hr />
 
     </div>
 
-    <footer>
-        <p>Copyright &copy; @DateTime.Now.Year - Causes.org</p>
+    <footer class="footer footer-dark bg-gradient-primary footer-dark bg-dark">
+        <div class="container">
+            <div class="row pt-md">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="#">
+                        <img src="~/images/logo.png" alt="Footer logo" class="logo">
+                    </a>
+                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Home</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="account-profile.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="account-settings.html">About</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Profile</h6>
+                    <ul class="list-unstyled text-small">
+                        <li>
+                            <a href="#">My Causes</a>
+                        </li>
+                        <li>
+                            <a href="#">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
+                <div class="col-md-6">
+                    <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                        &copy; @DateTime.Now.Year <a href="#" class="font-weight-bold" target="_blank">Causes.org</a>. All rights reserved.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" target="_blank">
+                                <i class="fab fa-reddit"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
