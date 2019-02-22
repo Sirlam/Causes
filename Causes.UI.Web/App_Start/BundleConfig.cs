@@ -26,6 +26,18 @@ namespace Causes.UI.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/swiper").Include(
+                      "~/Content/swiper.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/swiperjs").Include(
+                      "~/Scripts/swiper.js"));
+
+            bundles.Add(new StyleBundle("~/Content/fancybox").Include(
+                      "~/Content/jquery.fancybox.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fancyjs").Include(
+                      "~/Scripts/jquery.fancybox.js"));
+
             bundles.Add(new StyleBundle("~/Content/font-awesome").Include(
                       "~/Content/all.css"));
         }

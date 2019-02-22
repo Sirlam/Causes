@@ -4,11 +4,105 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Causes.org | @ViewBag.Title</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/favicon.ico" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800">
+
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/swiper")
+    @Styles.Render("~/Content/fancybox")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
 <body>
+    <header class="header-transparent" id="header-main">
+        <!-- Main navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-dark bg-dark" id="navbar-main">
+            <div class="container">
+                <a class="navbar-brand mr-lg-5" href="../index.html">
+                    <img class="logo" alt="Causes.org" src="../assets/img/brand/white.png" >
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar-main-collapse">
+                    <ul class="navbar-nav align-items-lg-center">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../index.html">Overview</a>
+                        </li>
+                        <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow py-0">
+                                <div class="list-group">
+                                    <a href="pages-landing.html" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">
+                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/browser-window.svg" class="img-saturate" style="width: 50px;">
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1">Landing Pages</h6>
+                                                <p class="mb-0">A great point to start from.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="pages-secondary.html" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">
+                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/ios-photos.svg" class="img-saturate" style="width: 50px;">
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1">Secondary Pages</h6>
+                                                <p class="mb-0">Build your website with these demos.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="pages-account.html" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">
+                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/maintenance.svg" class="img-saturate" style="width: 50px;">
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1">Account Pages</h6>
+                                                <p class="mb-0">Account management made easy.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="pages-shop.html" class="list-group-item list-group-item-action">
+                                        <div class="media d-flex align-items-center">
+                                            <img alt="Image placeholder" src="../assets/img/icons/dusk/svg/in-progress.svg" class="img-saturate" style="width: 50px;">
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-1">Shop Pages</h6>
+                                                <p class="mb-0">Explore the full ecommerce website flow.</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../docs/alerts.html" role="button">Components</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../docs/introduction.html" target="_blank">Docs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../docs/changelog.html" target="_blank">Changelog</a>
+                        </li>
+                        <li class="nav-item mr-0">
+                            <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="nav-link d-lg-none">Purchase now</a>
+                            <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex">
+                                <span class="btn-inner--icon"><i class="far fa-shopping-cart"></i></span>
+                                <span class="btn-inner--text">Purchase now</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <nav id="myNavbar" class="navbar navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -91,6 +185,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/swiperjs")
+    @Scripts.Render("~/bundles/fancyjs")
     @RenderSection("scripts", required: false)
 </body>
 </html>
