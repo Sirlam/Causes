@@ -32,9 +32,13 @@ namespace Causes.UI.Web.Controllers
                 cause.DESCRIPTION = item.DESCRIPTION;
                 cause.CREATED_BY = item.CREATED_BY;
                 cause.CREATED_DATE = item.CREATED_DATE;
+                cause.SignatureCount = _causesDAC.CountSignatures(item.ID);
+                cause.Creator = _causesDAC.getCauseCreator(item.CREATED_BY);
                 model.Add(cause);
             }
             return View(model);
         }
+
+
     }
 }

@@ -5,47 +5,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Cause</h4>
-        <p class="text-success">@ViewBag.Message</p>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.TOPIC, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TOPIC, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TOPIC, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="clearfix">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DESCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
-            </div>
-        </div>
+</div>
+<br />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IMG_FILE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" class="form-control" name="@Html.NameFor(model => model.IMG_FILE)" id="@Html.IdFor(model => model.IMG_FILE)" />
-                @Html.ValidationMessageFor(model => model.IMG_FILE, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="container d-flex align-items-center">
+    <div class="col">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <div class="text-center mb-5">
+                    <h6 class="h3">Add a new Cause</h6>
+                    <p class="text-success">@ViewBag.Message</p>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-danger" />
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TOPIC, new { @class = "form-control-label" })
+                        <div class="input-group input-group-transparent">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-book"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.TOPIC, new { htmlAttributes = new { @class = "form-control", @placeholder = "Topic" } })
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.TOPIC, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DESCRIPTION, new { @class = "form-control-label" })
+                        <div class="input-group input-group-transparent">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-book-open"></i></span>
+                            </div>
+                            @Html.TextAreaFor(model => model.DESCRIPTION, new { @class = "form-control", @placeholder = "Description", @rows = 10 } )
+                        </div>
+                        @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IMG_FILE, new { @class = "form-control-label" })
+                        <div class="input-group input-group-transparent">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-file"></i></span>
+                            </div>
+                            <input type="file" class="form-control" name="@Html.NameFor(model => model.IMG_FILE)" id="@Html.IdFor(model => model.IMG_FILE)" />
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.IMG_FILE, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-block btn-primary">Create</button>
+                    </div>
+                }
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

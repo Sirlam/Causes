@@ -44,6 +44,7 @@ namespace Causes.UI.Web.Controllers
                 cs.IMG_URL = i.IMG_URL;
                 cs.CREATED_BY = i.CREATED_BY;
                 cs.CREATED_DATE = i.CREATED_DATE;
+                cs.SignatureCount = _cDAC.CountSignatures(i.ID);
                 model.Add(cs);
             }
             return View(model);

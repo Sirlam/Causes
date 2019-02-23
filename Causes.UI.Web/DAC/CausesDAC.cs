@@ -89,5 +89,25 @@ namespace Causes.UI.Web.DAC
                 return query.Count();
             }
         }
+
+        public int CountSignatures(int id)
+        {
+            using(var db = new AppDbContext())
+            {
+                IQueryable<TB_SIGNATURES> query = db.TB_SIGNATURES.Where(x => x.CAUSE_ID == id);
+
+                return query.Count();
+            }
+        }
+
+        public string getCauseCreator(int id)
+        {
+            using (var db = new AppDbContext())
+            {
+                var query = db.TB_USERS.Where(x => x.ID == id).FirstOrDefault();
+
+                return query.FIRST_NAME + " " + query.LAST_NAME;
+            }
+        }
     }
 }

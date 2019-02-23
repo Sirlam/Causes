@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CauseController.cs" />
     <Compile Include="DAC\CausesDAC.cs" />
+    <Compile Include="DAC\SignatureDAC.cs" />
     <Compile Include="Data\AppDbContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -216,8 +217,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\backgorund.jpg" />
+    <Content Include="images\facebook.png" />
+    <Content Include="images\instagram.png" />
     <Content Include="images\child-labour-slogans.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\reddit.png" />
+    <Content Include="images\twitter-wide.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="ApplicationInsights.config">

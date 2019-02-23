@@ -26,22 +26,22 @@
                         <div class="card shadow-sm shadow--hover">
                             <img alt="Image placeholder" src="@Url.Content(item.IMG_URL)" class="card-img-top">
                             <div class="card-body py-5 text-center">
-                                <a href="#" class="h5 lh-150">@item.TOPIC</a>
-                                <h6 class="text-muted mt-4 mb-0">By: Salam Olanrewaju</h6>
-                                <h6 class="text-muted mt-4 mb-0">@item.CREATED_DATE</h6>
+                                <a href="#" class="h5 lh-150">@Html.DisplayFor(modelItem => item.TOPIC)</a>
+                                <h6 class="text-muted mt-4 mb-0">By: @Html.DisplayFor(modelItem => item.Creator)</h6>
+                                <h6 class="text-muted mt-4 mb-0">@Html.DisplayFor(modelItem => item.CREATED_DATE)</h6>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col text-center">
                                         <ul class="list-inline mb-0">
                                             <li class="list-inline-item pr-4">
-                                                <a href="#" class="text-muted"><i class="fa fa-share mr-1 text-muted"></i> 131</a>
-                                            </li>
-                                            <li class="list-inline-item pr-4">
-                                                <a href="#" class="text-muted"><i class="far fa-eye mr-1 text-muted"></i> View</a>
+                                                <a href="#" class="text-muted"><i class="fa fa-thumbs-up mr-1 text-muted"></i> @Html.DisplayFor(modelItem => item.SignatureCount)</a>
                                             </li>
                                             <li class="list-inline-item pr-4">
                                                 <a href="#" class="text-muted"><i class="fa fa-check mr-1 text-muted"></i> Sign</a>
+                                            </li>
+                                            <li class="list-inline-item pr-4">
+                                                <a href="#" class="text-muted"><i class="fa fa-share mr-1 text-muted"></i> Share</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -63,22 +63,22 @@
         <div class="row justify-content-center">
             <div class="col-md-2 col-6 mb-4 mb-md-0">
                 <div class="px-4 py-4">
-                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-1.png" class="img-fluid img-grayscale">
+                    <img alt="Image placeholder" src="~/images/facebook.png" class="img-fluid img-grayscale">
                 </div>
             </div>
             <div class="col-md-2 col-6 mb-4 mb-md-0">
                 <div class="px-4 py-4">
-                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-2.png" class="img-fluid img-grayscale">
+                    <img alt="Image placeholder" src="~/images/instagram.png" class="img-fluid img-grayscale">
                 </div>
             </div>
             <div class="col-md-2 col-6 mb-4 mb-md-0">
                 <div class="px-4 py-4">
-                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-3.png" class="img-fluid img-grayscale">
+                    <img alt="Image placeholder" src="~/images/twitter-wide.png" class="img-fluid img-grayscale">
                 </div>
             </div>
             <div class="col-md-2 col-6 mb-4 mb-md-0">
                 <div class="px-4 py-4">
-                    <img alt="Image placeholder" src="../assets/img/prv/partners/brand-4.png" class="img-fluid img-grayscale">
+                    <img alt="Image placeholder" src="~/images/reddit.png" class="img-fluid img-grayscale">
                 </div>
             </div>
         </div>

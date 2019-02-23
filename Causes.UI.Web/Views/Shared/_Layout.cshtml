@@ -22,7 +22,7 @@
         <!-- Main navbar -->
         <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-dark bg-dark" id="navbar-main">
             <div class="container">
-                <a class="navbar-brand mr-lg-5" href="../index.html">
+                <a class="navbar-brand mr-lg-5" href="#">
                     <img class="logo" alt="Causes.org" src="~/images/logo.png">
                 </a>
 
@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbar-main-collapse">
                     <ul class="navbar-nav align-items-lg-center">
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">Home</a>
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                         </li>
 
                         <li class="nav-item">
@@ -43,7 +43,7 @@
 
                     <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" target="_blank">My Causes</a>
+                            @Html.ActionLink("My Causes", "MyCauses", "Cause", null, new { id = "1", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" target="_blank">Admin</a>
@@ -108,10 +108,10 @@
                     <h6 class="heading mb-3">Home</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="account-profile.html">Home</a>
+                            @Html.ActionLink("Home", "Index", "Home")
                         </li>
                         <li>
-                            <a href="account-settings.html">About</a>
+                            @Html.ActionLink("About", "About", "Home")
                         </li>
                     </ul>
                 </div>

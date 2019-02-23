@@ -5,37 +5,50 @@
 }
 
 <div class="clearfix">
-    <div class="pull-right">
-        <a href="@Url.Action("Create")" class="btn btn-success">
-            <i class="glyphicon glyphicon-plus-sign"></i>
-            Add New
-        </a>
-    </div>
+    
 </div>
 <br />
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <table id="example1" class="table table-bordered table-striped">
+
+<div class="container">
+    <p class="float-left lead">My Causes</p>
+    <div class="float-right">
+        <a href="@Url.Action("Create")" class="btn btn-primary">
+            <i class="fa fa-plus-circle"></i>
+            Add New
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped table-cards align-items-center">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.IMG_URL)</th>
-                    <th>@Html.DisplayNameFor(model => model.TOPIC)</th>
-                    <th>@Html.DisplayNameFor(model => model.DESCRIPTION)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.IMG_URL)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.TOPIC)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.DESCRIPTION)</th>
                     <th>@Html.DisplayNameFor(model => model.CREATED_DATE)</th>
+                    <th>Signatures</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td><img src="@Url.Content(item.IMG_URL)" class="sm-image"/></td>
-                    <td>@Html.DisplayFor(modelItem => item.TOPIC)</td>
-                    <td>@Html.DisplayFor(modelItem => item.DESCRIPTION)</td>
-                    <td>@Html.DisplayFor(modelItem => item.CREATED_DATE)</td>
-                </tr>
+                    <tr class="bg-white">
+                        <th scope="row">
+                            <div class="media align-items-center">
+                                <img src="@Url.Content(item.IMG_URL)" class="avatar avatar-lg mr-3">
+                            </div>
+                        </th>
+                        <td>@Html.DisplayFor(modelItem => item.TOPIC)</td>
+                        <td class="td-wrap">@Html.DisplayFor(modelItem => item.DESCRIPTION)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CREATED_DATE)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SignatureCount)</td>
+                    </tr>
+                    <tr class="table-divider"></tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+
+

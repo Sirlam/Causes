@@ -34,3 +34,8 @@ textarea {
 .card-img-top{
     height: 200px;
 }
+
+.td-wrap {
+    white-space: normal !important;
+    word-wrap: break-word;
+}

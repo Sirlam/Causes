@@ -9,6 +9,11 @@ namespace Causes.UI.Web.ViewModels
 {
     public class Cause
     {
+        public Cause()
+        {
+            Signatures = new List< String > ();
+        }
+
         public int ID { get; set; }
 
         [DisplayName("Cause")]
@@ -17,6 +22,7 @@ namespace Causes.UI.Web.ViewModels
         [DisplayName("Description")]
         public string DESCRIPTION { get; set; }
 
+        [DisplayName("Picture")]
         public string IMG_URL { get; set; }
 
         [DisplayName("Picture")]
@@ -26,6 +32,12 @@ namespace Causes.UI.Web.ViewModels
         public int CREATED_BY { get; set; }
 
         [DisplayName("Date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? CREATED_DATE { get; set; }
+
+        public int SignatureCount { get; set; }
+        public string Creator { get; set; }
+
+        public IList<String> Signatures { get; set; }
     }
 }
