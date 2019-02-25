@@ -11,7 +11,6 @@
                 <div class="text-center mb-5">
                     <h6 class="h3">Welcome back</h6>
                     <p class="text-muted mb-0">Sign in to your account to continue</p>
-                    <p class="text-danger">@ViewBag.Error</p>
                     <p class="text-success">@TempData["RegisterMessage"]</p>
                 </div>
                 <span class="clearfix"></span>
@@ -20,15 +19,15 @@
                     @Html.ValidationSummary(true)
                     @Html.AntiForgeryToken()
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Email, new { @class = "form-control-label" })
+                    @Html.LabelFor(model => model.Username, new { @class = "form-control-label" })
                     <div class="input-group input-group-transparent">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="far fa-user"></i></span>
                         </div>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "email@example.com" } })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username" } })
 
                     </div>
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group mb-4">

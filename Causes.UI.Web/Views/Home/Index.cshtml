@@ -38,7 +38,14 @@
                                                 <a href="#" class="text-muted"><i class="fa fa-thumbs-up mr-1 text-muted"></i> @Html.DisplayFor(modelItem => item.SignatureCount)</a>
                                             </li>
                                             <li class="list-inline-item pr-4">
-                                                <a href="#" class="text-muted"><i class="fa fa-check mr-1 text-muted"></i> Sign</a>
+                                                @if (item.ISigned)
+                                                {
+                                                    <a href="#" class="text-muted disabled"><i class="fa fa-check mr-1 text-muted"></i> You Signed</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#" class="text-muted"><i class="fa fa-check mr-1 text-muted"></i> Sign</a>
+                                                }
                                             </li>
                                             <li class="list-inline-item pr-4">
                                                 <a href="#" class="text-muted"><i class="fa fa-share mr-1 text-muted"></i> Share</a>

@@ -62,22 +62,26 @@ namespace Causes.UI.Web.DAC
             }
         }
 
-        public void DeleteCause(TB_CAUSES tB_CAUSES)
+        public bool DeleteCause(int id)
         {
             using(var db = new AppDbContext())
             {
-                var signatures = db.TB_SIGNATURES.Where(x => x.CAUSE_ID == tB_CAUSES.ID);
+                var signatures = db.TB_SIGNATURES.Where(x => x.CAUSE_ID == id);
                 //First Remove existing signature
                 if(signatures != null)
                 {
                     db.TB_SIGNATURES.RemoveRange(signatures);
+                    db.SaveChanges();
                 }
-                var cause = db.TB_CAUSES.Find(tB_CAUSES.ID);
+                var cause = db.TB_CAUSES.Find(id);
                 if(cause != null)
                 {
                     db.TB_CAUSES.Remove(cause);
+                    db.SaveChanges();
+                    return true;
                 }
             }
+            return false;
         }
 
         public int CountCauses()
@@ -90,15 +94,6 @@ namespace Causes.UI.Web.DAC
             }
         }
 
-        public int CountSignatures(int id)
-        {
-            using(var db = new AppDbContext())
-            {
-                IQueryable<TB_SIGNATURES> query = db.TB_SIGNATURES.Where(x => x.CAUSE_ID == id);
-
-                return query.Count();
-            }
-        }
 
         public string getCauseCreator(int id)
         {
@@ -109,5 +104,6 @@ namespace Causes.UI.Web.DAC
                 return query.FIRST_NAME + " " + query.LAST_NAME;
             }
         }
+
     }
 }

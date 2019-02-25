@@ -20,6 +20,10 @@ namespace Causes.UI.Web.ViewModels
         [DisplayName("Email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Username is required", AllowEmptyStrings = false)]
+        [DisplayName("Username")]
+        public string UserId { get; set; }
+
         [Required(ErrorMessage = "Password is required", AllowEmptyStrings = false)]
         [DataType(DataType.Password)]
         [DisplayName("Password")]
@@ -37,6 +41,8 @@ namespace Causes.UI.Web.ViewModels
         [Required(ErrorMessage = "Last name is required", AllowEmptyStrings = false)]
         [DisplayName("Last Name")]
         public string LastName { get; set; }
+
+        public string DisplayName { get; set; }
 
         public DateTime? LastLoginDate { get; set; }
 

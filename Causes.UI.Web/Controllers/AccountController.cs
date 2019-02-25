@@ -1,9 +1,16 @@
 ﻿using Causes.UI.Web.Data;
+using Causes.UI.Web.Identity.Models;
 using Causes.UI.Web.Models;
+using Causes.UI.Web.Security;
 using Causes.UI.Web.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -12,51 +19,93 @@ namespace Causes.UI.Web.Controllers
 {
     public class AccountController : Controller
     {
-        AppDbContext db;
-        static PasswordManager pwdManager;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private CustomIdentity identity;
+        private CustomMembershipProvider member;
+        private AppDbContext db;
 
         public AccountController()
         {
             db = new AppDbContext();
-            pwdManager = new PasswordManager();
+            member = new CustomMembershipProvider();
+        }
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         // GET: Account
-        public ActionResult Login()
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         // POST: Login
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login user, string returnUrl = "")
+        public async Task<ActionResult> Login(Login user, string returnUrl )
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(user);
+            try
             {
-                var localUser = db.TB_USERS.Where(x => x.EMAIL.ToLower() == user.Email.ToLower()).FirstOrDefault();
-
-                if (localUser != null)
+                if (Membership.ValidateUser(user.Username, user.Password))
                 {
-                    if (!pwdManager.IsPasswordMatch(user.Password, localUser.PASSWORD_SALT, localUser.PASSWORD_HASH))
-                        localUser = null;
+                    FormsAuthentication.SetAuthCookie(user.Username, user.RememberMe);
+
+                    if (this.Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                        && !returnUrl.StartsWith("//") & !returnUrl.StartsWith("/\\"))
+                        return this.Redirect(returnUrl);
                     else
-                    {
-                        FormsAuthentication.SetAuthCookie(user.Email, user.RememberMe);
-                        if (Url.IsLocalUrl(returnUrl))
-                            return Redirect(returnUrl);
-                        else
-                            return RedirectToAction("Index", "Home");
-                    }
-                        
+                        return this.RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Username and Passsword");
+                }
+
+            }catch(Exception e)
+            {
+                ModelState.AddModelError("", "An error occured. Please try again later");
             }
-            ViewBag.Error = "Invalid Username and Passsword";
-            ModelState.Remove("Password");
-            return View(user);
+                
+            return this.View(user);
         }
 
         // GET: Register
+        [AllowAnonymous]
+        [HttpGet]
         public ActionResult Register()
         {
             var model = new User();
@@ -68,42 +117,48 @@ namespace Causes.UI.Web.Controllers
 
         // POST: Register
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(User user)
+        public async Task<ActionResult> Register(User model)
         {
             if (ModelState.IsValid)
             {
-                string salt = string.Empty;
-                string passwordHash = pwdManager.GeneratePasswordHash(user.Password, out salt);
-                TB_USERS tB_USERS = new TB_USERS
+                var user = new ApplicationUser
                 {
-                    EMAIL = user.Email,
-                    FIRST_NAME = user.FirstName,
-                    LAST_NAME = user.LastName,
-                    ROLE_ID = user.RoleId,
-                    PASSWORD_HASH = passwordHash,
-                    PASSWORD_SALT = salt,
-                    CREATED_DATE = DateTime.Now,
+                    UserName = model.Email,
+                    Email = model.Email
                 };
 
-                db.TB_USERS.Add(tB_USERS);
-                db.SaveChanges();
-                //db.Entry(user).GetDatabaseValues();
-
-                ModelState.Clear();
-                TempData["RegisterMessage"] = "Account created. Please Login";
-                return RedirectToAction("Login");
+                if(member.CreateUser(model.UserId, model.Email, model.Password, model.RoleId, model.FirstName, model.LastName))
+                {
+                    TempData["RegisterMessage"] = "Account created. Please login";
+                    return RedirectToAction("Login");
+                }
             }
+
             List<TB_ROLES> userRoles = db.TB_ROLES.OrderBy(x => x.ID).ToList();
-            user.Roles = new SelectList(userRoles, "ID", "ROLE_NAME").ToList();
-            return View(user);
+            model.Roles = new SelectList(userRoles, "ID", "ROLE_NAME").ToList();
+            ModelState.AddModelError("", "Error. Please try again");
+            return View(model);
         }
 
         [Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            AuthenticationManager.SignOut();
+            Session.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+
     }
 }

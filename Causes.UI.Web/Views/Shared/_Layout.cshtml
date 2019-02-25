@@ -46,7 +46,7 @@
                             @Html.ActionLink("My Causes", "MyCauses", "Cause", null, new { id = "1", @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" target="_blank">Admin</a>
+                            @Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item mr-0">
                             <a class="nav-link d-lg-none" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-namespace Causes.UI.Web.Data
+namespace Causes.UI.Web.Security
 {
     public class HashComputer
     {

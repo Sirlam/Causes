@@ -179,7 +179,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CauseController.cs" />
     <Compile Include="DAC\CausesDAC.cs" />
@@ -187,16 +189,28 @@
     <Compile Include="Data\AppDbContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Data\HashComputer.cs" />
-    <Compile Include="Data\PasswordManager.cs" />
-    <Compile Include="Data\SaltGenerator.cs" />
+    <Compile Include="Data\ValidateFileAttribute.cs" />
+    <Compile Include="Security\AuthenticationType.cs" />
+    <Compile Include="Security\CustomRoleProvider.cs" />
+    <Compile Include="Security\CustomIdentity.cs" />
+    <Compile Include="Security\CustomMembershipProvider.cs" />
+    <Compile Include="Security\CustomMembershipUser.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="Security\HashComputer.cs" />
+    <Compile Include="Security\PasswordManager.cs" />
+    <Compile Include="Security\SaltGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Identity\IdentityModel.cs" />
     <Compile Include="Models\TB_CAUSES.cs" />
     <Compile Include="Models\TB_ROLES.cs" />
     <Compile Include="Models\TB_SIGNATURES.cs" />
     <Compile Include="Models\TB_USERS.cs" />
+    <Compile Include="Security\SecurityExtensions.cs" />
+    <Compile Include="Security\TimeAuthorizeAttribute.cs" />
+    <Compile Include="Security\UserRoleAuthorizeAttribute.cs" />
+    <Compile Include="Security\Utility.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Cause.cs" />
     <Compile Include="ViewModels\Login.cs" />
@@ -228,6 +242,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\deleteCause.js" />
+    <Content Include="Scripts\fileValidator.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.fancybox.min.js" />
     <Content Include="Scripts\swiper.js" />

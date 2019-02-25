@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Causes.UI.Web.DAC;
 using System.IO;
 using Causes.UI.Web.Models;
+using Causes.UI.Web.Security;
 
 namespace Causes.UI.Web.Controllers
 {
@@ -15,11 +16,13 @@ namespace Causes.UI.Web.Controllers
     {
         AppDbContext db;
         CausesDAC _cDAC;
+        SignatureDAC _signatureDAC;
 
         public CauseController()
         {
             db = new AppDbContext();
             _cDAC = new CausesDAC();
+            _signatureDAC = new SignatureDAC();
         }
 
         // GET: Cause
@@ -44,7 +47,7 @@ namespace Causes.UI.Web.Controllers
                 cs.IMG_URL = i.IMG_URL;
                 cs.CREATED_BY = i.CREATED_BY;
                 cs.CREATED_DATE = i.CREATED_DATE;
-                cs.SignatureCount = _cDAC.CountSignatures(i.ID);
+                cs.SignatureCount = _signatureDAC.CountSignatures(i.ID);
                 model.Add(cs);
             }
             return View(model);
@@ -59,6 +62,7 @@ namespace Causes.UI.Web.Controllers
         [HttpPost]
         public ActionResult Create(Cause cause)
         {
+            //var identity = ((CustomPrincipal)User).CustomIdentity;
             if (ModelState.IsValid)
             {
                 string filename = Path.GetFileNameWithoutExtension(cause.IMG_FILE.FileName);

@@ -9,10 +9,9 @@ namespace Causes.UI.Web.ViewModels
 {
     public class Login
     {
-        [Required(ErrorMessage = "Email is required", AllowEmptyStrings = false)]
-        [DataType(DataType.EmailAddress)]
-        [DisplayName("Email")]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "Username is required", AllowEmptyStrings = false)]
+        [DisplayName("Username")]
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "Password is required", AllowEmptyStrings = false)]
         [DataType(DataType.Password)]

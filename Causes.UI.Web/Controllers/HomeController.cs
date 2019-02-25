@@ -1,4 +1,5 @@
 ﻿using Causes.UI.Web.DAC;
+using Causes.UI.Web.Security;
 using Causes.UI.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,19 @@ namespace Causes.UI.Web.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        CausesDAC _causesDAC;
+        private CausesDAC _causesDAC;
+        private SignatureDAC _signatureDAC;
+        private CustomIdentity identity;
 
         public HomeController()
         {
+            _signatureDAC = new SignatureDAC();
             _causesDAC = new CausesDAC();
         }
 
         public ActionResult Index()
         {
+            //identity = ((CustomPrincipal)User).CustomIdentity;
             List<Cause> model = new List<Cause>();
             var items = _causesDAC.SelectAllCauses();
 
@@ -32,8 +37,9 @@ namespace Causes.UI.Web.Controllers
                 cause.DESCRIPTION = item.DESCRIPTION;
                 cause.CREATED_BY = item.CREATED_BY;
                 cause.CREATED_DATE = item.CREATED_DATE;
-                cause.SignatureCount = _causesDAC.CountSignatures(item.ID);
+                cause.SignatureCount = _signatureDAC.CountSignatures(item.ID);
                 cause.Creator = _causesDAC.getCauseCreator(item.CREATED_BY);
+                //cause.ISigned = _signatureDAC.ISigned(identity.ProfileId, item.ID);
                 model.Add(cause);
             }
             return View(model);

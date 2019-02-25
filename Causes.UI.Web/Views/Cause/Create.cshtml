@@ -53,8 +53,8 @@
                                 <span class="input-group-text"><i class="fa fa-file"></i></span>
                             </div>
                             <input type="file" class="form-control" name="@Html.NameFor(model => model.IMG_FILE)" id="@Html.IdFor(model => model.IMG_FILE)" />
-
                         </div>
+                        <small class="form-text text-muted">Accepted formats [.jpg, .png, .gif, .svg, .jpeg]</small>
                         @Html.ValidationMessageFor(model => model.IMG_FILE, "", new { @class = "text-danger" })
                     </div>
 
@@ -66,3 +66,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script src="@Url.Content("~/Scripts/fileValidator.js")" type="text/javascript"></script>
+}
