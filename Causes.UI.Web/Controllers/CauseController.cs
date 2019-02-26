@@ -91,8 +91,37 @@ namespace Causes.UI.Web.Controllers
             var model = new Cause();
             int cause_id = Convert.ToInt32(id);
 
-            model.ID = cause_id;
+            var item = _cDAC.SelectCauseById(cause_id);
+
+            model.ID = item.ID;
+            model.IMG_URL = item.IMG_URL;
+            model.TOPIC = item.TOPIC;
+            model.DESCRIPTION = item.DESCRIPTION;
+            model.CREATED_BY = item.CREATED_BY;
+            model.CREATED_DATE = item.CREATED_DATE;
+            model.SignatureCount = _signatureDAC.CountSignatures(item.ID);
+            model.Creator = _cDAC.getCauseCreator(item.CREATED_BY);
+            model.ISigned = _signatureDAC.ISigned(1, item.ID);
+            model.Signatures = _signatureDAC.getSignatures(item.ID);
+            
             return View(model);
+        }
+
+        public JsonResult Sign(int id)
+        {
+            //var identity = ((CustomPrincipal)User).CustomIdentity;
+            int user = 1;
+            bool sign = _signatureDAC.SignCause(id, 1);
+
+            if (sign)
+            {
+                TempData["Message"] = "Cause Signed Successfully";
+            }
+            else
+            {
+                TempData["Message"] = "An Error Occured";
+            }
+            return Json(sign, JsonRequestBehavior.AllowGet);
         }
     }
 }

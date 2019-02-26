@@ -39,7 +39,7 @@ namespace Causes.UI.Web.Controllers
                 cause.CREATED_DATE = item.CREATED_DATE;
                 cause.SignatureCount = _signatureDAC.CountSignatures(item.ID);
                 cause.Creator = _causesDAC.getCauseCreator(item.CREATED_BY);
-                //cause.ISigned = _signatureDAC.ISigned(identity.ProfileId, item.ID);
+                cause.ISigned = _signatureDAC.ISigned(1, item.ID);
                 model.Add(cause);
             }
             return View(model);

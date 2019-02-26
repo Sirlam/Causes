@@ -34,7 +34,7 @@
                                 <img src="@Url.Content(item.IMG_URL)" class="avatar avatar-lg mr-3">
                             </div>
                         </th>
-                        <td>@Html.DisplayFor(modelItem => item.TOPIC)</td>
+                        <td><a href="@Url.Action("Views", "Cause", new { id = item.ID})">@Html.DisplayFor(modelItem => item.TOPIC)</a></td>
                         <td class="td-wrap">@Html.DisplayFor(modelItem => item.DESCRIPTION)</td>
                         <td>@Html.DisplayFor(modelItem => item.CREATED_DATE)</td>
                         <td>@Html.DisplayFor(modelItem => item.SignatureCount)</td>

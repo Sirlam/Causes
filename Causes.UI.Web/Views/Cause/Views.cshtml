@@ -5,5 +5,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<section class="slice">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <!-- Article body -->
+                <article>
+                    <h5>@Html.DisplayFor(modelItem => modelItem.TOPIC)</h5>
+                    <figure class="figure">
+                        <img alt="Image placeholder" src="@Url.Content(Model.IMG_URL)" class="img-fluid rounded">
+                        <figcaption class="mt-3 text-muted">By: @Html.DisplayFor(modelItem => modelItem.Creator)</figcaption>
+                        <p>@Html.DisplayFor(modelItem => modelItem.CREATED_DATE)</p>
+                        <p>
+                            <a href="#" class="text-muted"><i class="fa fa-thumbs-up mr-1 text-muted"></i> @Html.DisplayFor(modelItem => modelItem.SignatureCount)</a>
+                            @if (Model.ISigned)
+                            {
+                                <a href="javascript:void()" class="text-danger disabled"><i class="fa fa-check-double mr-1 text-muted"></i> You Signed</a>
+                            }
+                            else
+                            {
+                                <a href="#" class="text-muted" onclick="ConfirmSign(@Model.ID)"><i class="fa fa-check mr-1 text-muted"></i> Sign</a>
+                            }
+                            <a href="#" class="text-muted"><i class="fa fa-share mr-1 text-muted"></i> Share</a>
+                        </p>
+                    </figure>
+                    <p class="lead">@Html.DisplayFor(modelItem => modelItem.DESCRIPTION)</p>
+                </article>
+                <hr>
+                <h5 class="mb-4">Signatures</h5>
+                <div class="p-5 bg-secondary border rounded">
+                    <ul class="list-bullet">
+                        @foreach (var item in Model.Signatures)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
+@section Scripts{
+    <script src="~/Scripts/signCause.js" type="text/javascript"></script>
+}

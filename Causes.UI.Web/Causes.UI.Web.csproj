@@ -246,6 +246,7 @@
     <Content Include="Scripts\fileValidator.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.fancybox.min.js" />
+    <Content Include="Scripts\signCause.js" />
     <Content Include="Scripts\swiper.js" />
     <Content Include="Scripts\swiper.min.js" />
     <Content Include="webfonts\fa-brands-400.svg" />
