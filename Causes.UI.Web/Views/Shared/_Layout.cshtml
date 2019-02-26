@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Causes.UI.Web.Security
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -48,10 +49,21 @@
 
                     <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                         <li class="nav-item">
-                            <a href="@Url.Action("MyCauses", "Cause", new { id = 1})" class="nav-link">My Causes</a>
+                            @if (Request.IsAuthenticated)
+                            {
+                                var identity = ((CustomPrincipal)HttpContext.Current.User).CustomIdentity;
+                                <a href="@Url.Action("MyCauses", "Cause", new { id = identity.ProfileId })" class="nav-link">My Causes</a>
+                            }
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })
+                            @if (Request.IsAuthenticated)
+                            {
+                                var identity = ((CustomPrincipal)HttpContext.Current.User).CustomIdentity;
+                                if (identity.UserRoleName == "Admin")
+                                {
+                                    @Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })
+                                }
+                            }
                         </li>
                         <li class="nav-item mr-0">
                             <a class="nav-link d-lg-none" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>

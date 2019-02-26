@@ -9,14 +9,16 @@ using Causes.UI.Web.DAC;
 using System.IO;
 using Causes.UI.Web.Models;
 using Causes.UI.Web.Security;
+using PagedList;
 
 namespace Causes.UI.Web.Controllers
 {
     public class CauseController : Controller
     {
-        AppDbContext db;
-        CausesDAC _cDAC;
-        SignatureDAC _signatureDAC;
+        private AppDbContext db;
+        private CausesDAC _cDAC;
+        private SignatureDAC _signatureDAC;
+        private CustomIdentity identity;
 
         public CauseController()
         {
@@ -35,7 +37,6 @@ namespace Causes.UI.Web.Controllers
         {
             List<Cause> model = new List<Cause>();
 
-            id = 1;
             var items = _cDAC.SelectCausesByUser(id);
 
             foreach(var i in items)
@@ -50,6 +51,7 @@ namespace Causes.UI.Web.Controllers
                 cs.SignatureCount = _signatureDAC.CountSignatures(i.ID);
                 model.Add(cs);
             }
+
             return View(model);
         }
 
@@ -65,6 +67,7 @@ namespace Causes.UI.Web.Controllers
             //var identity = ((CustomPrincipal)User).CustomIdentity;
             if (ModelState.IsValid)
             {
+                identity = ((CustomPrincipal)User).CustomIdentity;
                 string filename = Path.GetFileNameWithoutExtension(cause.IMG_FILE.FileName);
                 string extension = Path.GetExtension(cause.IMG_FILE.FileName);
                 filename = filename = DateTime.Now.ToString("yymmssfff")+extension;
@@ -77,7 +80,7 @@ namespace Causes.UI.Web.Controllers
                     TOPIC = cause.TOPIC,
                     DESCRIPTION = cause.DESCRIPTION,
                     IMG_URL = cause.IMG_URL,
-                    CREATED_BY = 1,
+                    CREATED_BY = identity.ProfileId,
                     CREATED_DATE = DateTime.Now,                
                 };
                 _cDAC.InsertCause(tB_CAUSES);
@@ -88,6 +91,7 @@ namespace Causes.UI.Web.Controllers
 
         public ActionResult Views(string id)
         {
+            identity = ((CustomPrincipal)User).CustomIdentity;
             var model = new Cause();
             int cause_id = Convert.ToInt32(id);
 
@@ -101,7 +105,7 @@ namespace Causes.UI.Web.Controllers
             model.CREATED_DATE = item.CREATED_DATE;
             model.SignatureCount = _signatureDAC.CountSignatures(item.ID);
             model.Creator = _cDAC.getCauseCreator(item.CREATED_BY);
-            model.ISigned = _signatureDAC.ISigned(1, item.ID);
+            model.ISigned = _signatureDAC.ISigned(identity.ProfileId, item.ID);
             model.Signatures = _signatureDAC.getSignatures(item.ID);
             
             return View(model);
@@ -109,9 +113,9 @@ namespace Causes.UI.Web.Controllers
 
         public JsonResult Sign(int id)
         {
-            //var identity = ((CustomPrincipal)User).CustomIdentity;
-            int user = 1;
-            bool sign = _signatureDAC.SignCause(id, 1);
+            identity = ((CustomPrincipal)User).CustomIdentity;
+
+            bool sign = _signatureDAC.SignCause(id, identity.ProfileId);
 
             if (sign)
             {

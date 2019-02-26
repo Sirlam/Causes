@@ -54,9 +54,7 @@ namespace Causes.UI.Web.DAC
         {
             using(var db = new AppDbContext())
             {
-                var query = db.TB_CAUSES.Select(x => x);
-
-                query.OrderByDescending(q => q.CREATED_DATE);
+                var query = db.TB_CAUSES.OrderByDescending(q => q.CREATED_DATE).Select(x => x);
 
                 return query.ToList();
             }

@@ -110,3 +110,7 @@ C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\De
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.dll
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.pdb
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csprojAssemblyReference.cache
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.dll
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.Mvc.dll
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.xml
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.Mvc.xml

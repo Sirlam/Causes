@@ -39,3 +39,7 @@ textarea {
     white-space: normal !important;
     word-wrap: break-word;
 }
+
+.card{
+    margin-bottom: 10px;
+}
