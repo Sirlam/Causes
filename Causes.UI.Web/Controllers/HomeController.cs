@@ -45,6 +45,10 @@ namespace Causes.UI.Web.Controllers
             return View(model);
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
 
     }
 }

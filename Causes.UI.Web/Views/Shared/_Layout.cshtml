@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="http://localhost:3493/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Causes.org" />
+    <meta property="og:description" content="Create causes for people to sign" />
+    <meta property="og:image" content="~/favicon.ico" />
     <title>Causes.org | @ViewBag.Title</title>
 
     <!-- Favicon -->
@@ -37,13 +42,13 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" role="button">About</a>
+                            @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
                         </li>
                     </ul>
 
                     <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                         <li class="nav-item">
-                            @Html.ActionLink("My Causes", "MyCauses", "Cause", null, new { id = "1", @class = "nav-link" })
+                            <a href="@Url.Action("MyCauses", "Cause", new { id = 1})" class="nav-link">My Causes</a>
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })
@@ -68,13 +73,13 @@
                 <div class="col">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 col-lg-7 text-center">
-                            <h1 class="text-white lh-150 mb-4">On Causes.org, people are starting causes, mobilising supportes and changing the world.</h1>
+                            <h1 class="text-white lh-150 mb-4">On Causes.org, people are starting causes, mobilising supporters and changing the world.</h1>
                             <ul class="list-inline">
                                 <li class="list-inline-item text-white">February 15, 2019</li>
                                 <li class="list-inline-item text-white">Written by Admin</li>
                             </ul>
                             <span class="clearfix"></span>
-                            <a href="#" class="btn btn-white btn-circle btn-icon mt-4">
+                            <a href="@Url.Action("About", "Home")" class="btn btn-white btn-circle btn-icon mt-4">
                                 <span class="btn-inner--text">Continue reading</span>
                                 <span class="btn-inner--icon"><i class="fa fa-angle-right"></i></span>
                             </a>
@@ -90,6 +95,7 @@
     }
 
     <div>
+        <div id="fb-root"></div>
         @RenderBody()
         <hr />
 
@@ -102,7 +108,7 @@
                     <a href="#">
                         <img src="~/images/logo.png" alt="Footer logo" class="logo">
                     </a>
-                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="text-sm">On Causes.org, people are starting causes, mobilising supporters and changing the world</p>
                 </div>
                 <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
                     <h6 class="heading mb-3">Home</h6>
@@ -165,6 +171,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/swiperjs")
     @Scripts.Render("~/bundles/fancyjs")
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=369782596941708&autoLogAppEvents=1"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
