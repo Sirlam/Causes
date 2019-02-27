@@ -123,6 +123,16 @@ namespace Causes.UI.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var usernameExists = db.TB_USERS.Where(x => x.USER_ID == model.UserId).FirstOrDefault();
+                var emailExists = db.TB_USERS.Where(x => x.EMAIL == model.Email).FirstOrDefault();
+                if (usernameExists != null || emailExists != null)
+                {
+                    ModelState.AddModelError("", "Username or Email Already Exists");
+                    List<TB_ROLES> userRoles2 = db.TB_ROLES.OrderBy(x => x.ID).ToList();
+                    model.Roles = new SelectList(userRoles2, "ID", "ROLE_NAME").ToList();
+                    return View(model);
+                }
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
