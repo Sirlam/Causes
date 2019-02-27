@@ -40,6 +40,12 @@ namespace Causes.UI.Web
 
             bundles.Add(new StyleBundle("~/Content/font-awesome").Include(
                       "~/Content/all.css"));
+
+            bundles.Add(new StyleBundle("~/Content/datatable").Include(
+                      "~/Content/datatables.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatablejs").Include(
+                      "~/Scripts/datatables.js"));
         }
     }
 }

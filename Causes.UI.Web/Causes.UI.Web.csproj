@@ -228,6 +228,8 @@
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables.css" />
+    <Content Include="Content\datatables.min.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\jquery.fancybox.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -249,7 +251,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\deleteCause.js" />
+    <Content Include="Scripts\DTable.js" />
     <Content Include="Scripts\fb-share.js" />
     <Content Include="Scripts\fileValidator.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
