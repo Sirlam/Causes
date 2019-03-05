@@ -3,9 +3,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using MySql.Data.Entity;
 using Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +20,7 @@ namespace Causes.UI.Web
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
 
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions

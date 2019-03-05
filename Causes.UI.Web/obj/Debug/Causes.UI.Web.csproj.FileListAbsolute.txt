@@ -105,12 +105,14 @@ C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\Mi
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\Microsoft.AI.Web.xml
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csproj.CoreCompileInputs.cache
-C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csproj.CopyComplete
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.dll
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.pdb
-C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csprojAssemblyReference.cache
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.dll
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.Mvc.dll
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.xml
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\PagedList.Mvc.xml
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.dll
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.Entity.EF6.dll
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.xml
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.Entity.EF6.xml
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csprojResolveAssemblyReference.cache

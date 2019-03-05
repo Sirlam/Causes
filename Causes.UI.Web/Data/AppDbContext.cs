@@ -1,4 +1,5 @@
 ﻿using Causes.UI.Web.Models;
+using MySql.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,15 +11,17 @@ using System.Web;
 
 namespace Causes.UI.Web.Data
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class AppDbContext : DbContext
     {
         public AppDbContext()
             : base("name=AppDbContext")
         {
             Database.SetInitializer<AppDbContext>(null);
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
 
-            var objectContext = (this as IObjectContextAdapter).ObjectContext;
-            objectContext.CommandTimeout = 600;
+            //var objectContext = (this as IObjectContextAdapter).ObjectContext;
+            //objectContext.CommandTimeout = 600;
         }
 
         object GetPrimaryKeyValue(DbEntityEntry entry)
@@ -29,8 +32,6 @@ namespace Causes.UI.Web.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            string schemaName = ConfigurationManager.AppSettings["SchemaName"];
-            modelBuilder.HasDefaultSchema(schemaName);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<DecimalPropertyConvention>();
             modelBuilder.Conventions.Add(new DecimalPropertyConvention(28, 28));
