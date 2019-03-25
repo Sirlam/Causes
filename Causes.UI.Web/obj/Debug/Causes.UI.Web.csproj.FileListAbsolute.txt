@@ -115,4 +115,6 @@ C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\My
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.Entity.EF6.dll
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.xml
 C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\bin\MySql.Data.Entity.EF6.xml
-C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csprojResolveAssemblyReference.cache
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csprojAssemblyReference.cache
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csproj.CoreCompileInputs.cache
+C:\Users\salam\Documents\Visual Studio 2017\Projects\Causes\Causes.UI.Web\obj\Debug\Causes.UI.Web.csproj.CopyComplete
